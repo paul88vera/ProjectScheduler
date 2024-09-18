@@ -1,4 +1,3 @@
-import { GrOverview } from "react-icons/gr";
 import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { RiRestTimeLine } from "react-icons/ri";
@@ -22,11 +21,6 @@ export const Navbar = ({ onClose }) => {
         <li>
           <a href="/dashboard">
             <MdOutlineSpaceDashboard title="Dashboard" className={iconStyle} />
-          </a>
-        </li>
-        <li>
-          <a href="/overview">
-            <GrOverview title="Project Overview" className={iconStyle} />
           </a>
         </li>
         <li>
@@ -54,7 +48,8 @@ export const Navbar = ({ onClose }) => {
           </a>
         </li>
 
-        {window.URL != "/dashboard" ? (
+        {!window.location.href.includes("dashboard") ||
+        window.location.href.includes("projects") ? (
           <li>
             <a href="../">
               <IoMdArrowRoundBack title="Back" className={iconStyle} />

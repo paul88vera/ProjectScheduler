@@ -4,12 +4,12 @@ import { baseApi } from "./base";
 // @desc     Get all users
 // @access   Private - Public For Now
 export function getAllUsers(options) {
-  return baseApi.get("/users", options).then((res) => res.data);
+  return baseApi.get("users", options).then((res) => res.data);
 }
 
 // @route    GET /api/users/:id
 // @desc     Get user by id
 // @access   Private - Public For Now
 export function getUser(id, options) {
-  return baseApi.get(`/users/${id}`, options).then((res) => res.data);
+  return baseApi.get(`users/${id}`, options).then((res) => res.data);
 }
