@@ -1,0 +1,68 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "super",
+      "department": "developer",
+      "role": "super-admin",
+      "active": true
+    },
+    {
+      "id": 1,
+      "name": "administrator",
+      "department": "account manager",
+      "role": "admin",
+      "active": true
+    }
+  ],
+  "clients": [
+    {
+      "id": 0,
+      "projects": [
+        {
+          "id": 0
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "id": 0,
+      "name": "test1",
+      "start": "10-12-2024",
+      "due": "11-12-2024",
+      "am": "Kayla",
+      "am-days": 7,
+      "seo": "Jon",
+      "seo-days": 7,
+      "copy": "Lauren",
+      "copy-days": 7,
+      "design": "Jessica",
+      "design-days": 7,
+      "social": "Chelsea",
+      "social-days": 3,
+      "dev": "Paul",
+      "dev-days": 10,
+      "total-days": 1
+    },
+    {
+      "id": 1,
+      "name": "test2",
+      "start": "10-12-2024",
+      "due": "11-12-2024",
+      "am": "Kayla",
+      "am-days": 7,
+      "seo": "Jon",
+      "seo-days": 7,
+      "copy": "Lauren",
+      "copy-days": 7,
+      "design": "Jessica",
+      "design-days": 7,
+      "social": "Chelsea",
+      "social-days": 3,
+      "dev": "Paul",
+      "dev-days": 10,
+      "total-days": null
+    }
+  ]
+}

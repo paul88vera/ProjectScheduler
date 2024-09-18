@@ -1,4 +1,6 @@
 // eslint-disable-next-line react/prop-types
-export const Completed = ({ containerStyle }) => {
+const Completed = ({ containerStyle }) => {
   return <div className={containerStyle}>Completed</div>;
 };
+
+export default Completed;

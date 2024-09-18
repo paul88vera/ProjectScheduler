@@ -15,6 +15,24 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Dark Mode */
+  --global-color-dark-bg: #000321;
+  --global-color-dark-light-bg: #25294a;
+  --global-color-dark-text: #8e8c8c;
+  --global-color-dark-alt-text: #ffffff;
+  --global-color-dark-accent: #5c6296;
+
+  /* Light Mode */
+  --global-color-light-bg: #f8f8f8;
+  --global-color-light-light-bg: #ffffff;
+  --global-color-light-text: #000000;
+  --global-color-light-alt-text: #8e8c8c;
+  --global-color-light-accent: #00afa0;
+
+  /* Misc Colors */
+  --global-color-warning: #ecbc13;
+  --global-color-priority: #f24f4f;
 }
 body {
   margin: 0;
@@ -35,14 +53,4 @@ button {
   text-align: center;
   padding: 0.5rem 1rem;
   cursor: pointer;
-}
-
-/* 
-Main Container 
-*/
-.main_container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 0;
 }

@@ -13,7 +13,7 @@ const RootLayout = () => {
   return (
     <>
       <ScrollRestoration />
-      <div className="main_container">
+      <div className="flex flex-row flex-nowrap gap-0">
         {!isOpen ? (
           <button
             onClick={toggleNavbar}
