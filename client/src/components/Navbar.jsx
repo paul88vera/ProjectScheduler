@@ -2,68 +2,58 @@ import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { AiOutlineFieldTime } from "react-icons/ai";
 import { RiRestTimeLine } from "react-icons/ri";
 import { IoFileTrayFullOutline } from "react-icons/io5";
-import { IoMdArrowRoundBack } from "react-icons/io";
 import { FcCollapse } from "react-icons/fc";
 import { FaPlus } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
-const iconStyle = "h-[30px] text-[2rem] hover:text-blue-400 m-auto";
+const iconStyle =
+  "h-[5svh] md:h-[30px] text-[1.5rem] hover:text-blue-400 m-auto";
+
+const liStyle = "flex items-center justify-center w-full";
 
 // eslint-disable-next-line react/prop-types
 export const Navbar = ({ onClose }) => {
   return (
-    <div id="navbar_container" className="h-[100svh] bg-black p-2 gap-10">
+    <div
+      id="navbar_container"
+      className="h-[10svh] md:h-[100svh] relative bg-[--global-color-dark-light-bg] p-2 gap-4 md:gap-10 flex flex-row md:flex-col align-middle items-center justify-center">
       <button
-        className={`relative text-white text-[1.5rem] m-auto`}
+        className="text-white text-[1.5rem] m-auto hidden md:block"
         onClick={onClose}>
         <FcCollapse title="Hide Navbar" className={iconStyle} />
       </button>
-      <ul className="h-[90%] flex flex-col flex-nowrap justify-center align-middle p-0 gap-8 text-center">
-        <li>
-          <a href="/dashboard">
+      <ul className="h-[10svh] md:h-[90%] flex flex-row md:flex-col flex-nowrap justify-center align-middle p-0 gap-2 md:gap-8 text-center w-full">
+        <li className={liStyle}>
+          <Link to="/dashboard">
             <MdOutlineSpaceDashboard title="Dashboard" className={iconStyle} />
-          </a>
+          </Link>
         </li>
-        <li>
-          <a href="/in-progress">
-            <AiOutlineFieldTime
-              title="Projects In-Progress"
-              className={iconStyle}
-            />
-          </a>
+        <li className={liStyle}>
+          <Link to="/active">
+            <AiOutlineFieldTime title="Active Projects" className={iconStyle} />
+          </Link>
         </li>
-        <li>
-          <a href="/late">
-            <RiRestTimeLine
-              title="Late/Paused Projects"
-              className={iconStyle}
-            />
-          </a>
+        <li className={liStyle}>
+          <Link to="/pending">
+            <RiRestTimeLine title="Pending Projects" className={iconStyle} />
+          </Link>
         </li>
-        <li>
-          <a href="/completed">
+        <li className={liStyle}>
+          <Link to="/completed">
             <IoFileTrayFullOutline
               title="Completed Projects"
               className={iconStyle}
             />
-          </a>
+          </Link>
         </li>
-
-        {!window.location.href.includes("dashboard") ||
-        window.location.href.includes("projects") ? (
-          <li>
-            <a href="../">
-              <IoMdArrowRoundBack title="Back" className={iconStyle} />
-            </a>
-          </li>
-        ) : null}
       </ul>
-      <a
-        href="/api/add-project"
+      <Link
+        to="/api/add-project"
         id="add-project"
-        className="h-[30px] flex
-      flex-col justify-center align-middle text-[2rem] font-normal m-auto hover:text-blue-400">
-        <FaPlus title="Add A Project" className={iconStyle} />
-      </a>
+        className="h-[20px] flex
+      flex-row md:flex-col items-center justify-center align-middle text-[1.5rem] font-normal m-auto hover:text-blue-400 p-4 md:py-0 md:mb-2">
+        <FaPlus title="Add A Project" />
+      </Link>
     </div>
   );
 };

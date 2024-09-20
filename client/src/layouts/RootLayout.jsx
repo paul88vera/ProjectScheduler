@@ -13,11 +13,11 @@ const RootLayout = () => {
   return (
     <>
       <ScrollRestoration />
-      <div className="flex flex-row flex-nowrap gap-0">
+      <div className="flex flex-col-reverse md:flex-row flex-nowrap gap-0">
         {!isOpen ? (
           <button
             onClick={toggleNavbar}
-            className="hover:scale-125 bg-slate-600 absolute hover:relative hover:w-4 ease-in-out transition-all">
+            className="bg-[--global-color-dark-light-bg] md:absolute hover:w-2 ease-in-out transition-all rounded-full h-10 w-10 m-2">
             <TbLayoutSidebarLeftCollapse />
           </button>
         ) : null}
