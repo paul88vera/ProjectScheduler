@@ -48,7 +48,7 @@ export const Navbar = ({ onClose }) => {
         </li>
       </ul>
       <Link
-        to="/api/add-project"
+        to="/add-project"
         id="add-project"
         className="h-[20px] flex
       flex-row md:flex-col items-center justify-center align-middle text-[1.5rem] font-normal m-auto hover:text-blue-400 p-4 md:py-0 md:mb-2">

@@ -31,9 +31,9 @@
   "projects": [
     {
       "id": 0,
-      "name": "test1",
-      "start": "10-12-2024",
-      "due": "11-12-2024",
+      "title": "test1",
+      "start": "Oct 12",
+      "due": "Nov 12",
       "am": "Kayla",
       "am-days": 7,
       "seo": "Jon",
@@ -58,9 +58,9 @@
     },
     {
       "id": 1,
-      "name": "test2",
-      "start": "10-12-2024",
-      "due": "11-12-2024",
+      "title": "test2",
+      "start": "Oct 12",
+      "due": "Nov 20",
       "am": "Kayla",
       "am-days": 7,
       "seo": "Jon",

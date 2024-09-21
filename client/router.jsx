@@ -4,7 +4,7 @@ import ErrorMessage from "./src/pages/ErrorMessage";
 import ActiveProjects from "./src/pages/ActiveProjects";
 import Pending from "./src/pages/Pending";
 import Completed from "./src/pages/Completed";
-import AddProject from "./src/pages/AddProject";
+import { NewProject } from "./src/pages/AddProject";
 import { DashboardRoute } from "./src/pages/Dashboard";
 import { ProjectItemRoute } from "./src/pages/ProjectItem";
 
@@ -51,8 +51,8 @@ export const router = createBrowserRouter([
             element: <Completed containerStyle={containerStyle} />,
           },
           {
-            path: "/api/add-project",
-            element: <AddProject containerStyle={containerStyle} />,
+            path: "/add-project",
+            ...NewProject,
           },
         ],
       },

@@ -10,10 +10,10 @@ export default function ProjectItem() {
         <Calendar />
       </div>
       <div className="px-4 rounded-md w-full h-[50svh]">
-        Project Information Bar: {item.name}
+        Project Information Bar: {item.title}
       </div>
       <div className="px-4 rounded-md w-full h-[50svh]">
-        Project Schedule Bar: {item.name}
+        Project Schedule Bar: {item.title}
       </div>
     </div>
   );
