@@ -1,5 +1,5 @@
 import { MdOutlineSpaceDashboard } from "react-icons/md";
-import { AiOutlineFieldTime } from "react-icons/ai";
+// import { AiOutlineFieldTime } from "react-icons/ai";
 import { RiRestTimeLine } from "react-icons/ri";
 import { IoFileTrayFullOutline } from "react-icons/io5";
 import { FcCollapse } from "react-icons/fc";
@@ -26,11 +26,6 @@ export const Navbar = ({ onClose }) => {
         <li className={liStyle}>
           <Link to="/dashboard">
             <MdOutlineSpaceDashboard title="Dashboard" className={iconStyle} />
-          </Link>
-        </li>
-        <li className={liStyle}>
-          <Link to="/active">
-            <AiOutlineFieldTime title="Active Projects" className={iconStyle} />
           </Link>
         </li>
         <li className={liStyle}>

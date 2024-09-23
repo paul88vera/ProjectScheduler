@@ -6,6 +6,11 @@ import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
 export default function Dashboard() {
   const projects = useLoaderData();
 
+  // filtering out any projects that are NOT "active"
+  const filteredProjects = projects.filter((project) => {
+    return project.status === "active";
+  });
+
   return (
     <div
       id="dashboard_container"
@@ -27,39 +32,43 @@ export default function Dashboard() {
       </div>
       {/* //! Need to make this into a component to fix the overflow-x-scroll functionality */}
       <div id="bottom_grid" className="rounded-md min-w-[1000px]">
-        <div className="flex flex-col gap-2 overflow-scroll">
-          <div className="p-4 rounded-md grid grid-cols-10 text-center bg-[--global-color-dark-light-bg]">
-            <h3>PROJECT</h3>
-            <h3>START</h3>
-            <h3>DUE</h3>
-            <h3>AM</h3>
-            <h3>DESIGN</h3>
-            <h3>COPY</h3>
-            <h3>SEO</h3>
-            <h3>DEV</h3>
-            <h3>SM</h3>
-            <h3>STATUS</h3>
+        {filteredProjects.length === 0 ? (
+          <p>Such Empty...</p>
+        ) : (
+          <div className="flex flex-col gap-2 overflow-scroll">
+            <div className="p-4 rounded-md grid grid-cols-10 text-center bg-[--global-color-dark-light-bg]">
+              <h3>PROJECT</h3>
+              <h3>START</h3>
+              <h3>DUE</h3>
+              <h3>AM</h3>
+              <h3>DESIGN</h3>
+              <h3>COPY</h3>
+              <h3>SEO</h3>
+              <h3>DEV</h3>
+              <h3>SM</h3>
+              <h3>STATUS</h3>
+            </div>
+            <div className="rounded-md grid grid-cols-1 text-center gap-2">
+              {filteredProjects.map((item) => (
+                <Link
+                  to={`/dashboard/projects/${item.id}`}
+                  key={item.id}
+                  className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center">
+                  <p>{item.title}</p>
+                  <p>{item.start}</p>
+                  <p>{item.due}</p>
+                  <p>{item.am}</p>
+                  <p>{item.design}</p>
+                  <p>{item.copy}</p>
+                  <p>{item.seo}</p>
+                  <p>{item.dev}</p>
+                  <p>{item.social}</p>
+                  <p>{item.status}</p>
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="rounded-md grid grid-cols-1 text-center gap-2">
-            {projects.map((item) => (
-              <Link
-                to={`/dashboard/projects/${item.id}`}
-                key={item.id}
-                className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center">
-                <p>{item.title}</p>
-                <p>{item.start}</p>
-                <p>{item.due}</p>
-                <p>{item.am}</p>
-                <p>{item.design}</p>
-                <p>{item.copy}</p>
-                <p>{item.seo}</p>
-                <p>{item.dev}</p>
-                <p>{item.social}</p>
-                <p>{item.status}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

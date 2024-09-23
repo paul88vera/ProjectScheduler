@@ -1,15 +1,16 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import RootLayout from "./src/layouts/RootLayout";
 import ErrorMessage from "./src/pages/ErrorMessage";
-import ActiveProjects from "./src/pages/ActiveProjects";
-import Pending from "./src/pages/Pending";
-import Completed from "./src/pages/Completed";
+// import ActiveProjects from "./src/pages/ActiveProjects";
+import { PendingRoute } from "./src/pages/Pending";
+import { CompletedRoute } from "./src/pages/Completed";
 import { NewProject } from "./src/pages/AddProject";
 import { DashboardRoute } from "./src/pages/Dashboard";
 import { ProjectItemRoute } from "./src/pages/ProjectItem";
 
-const containerStyle =
-  "p-4 md:p-16 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll";
+// * CSS for Pages that are not Routes yet */
+// const containerStyle =
+//   "p-4 md:p-16 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll";
 
 export const router = createBrowserRouter([
   {
@@ -39,16 +40,12 @@ export const router = createBrowserRouter([
             ],
           },
           {
-            path: "active",
-            element: <ActiveProjects containerStyle={containerStyle} />,
-          },
-          {
             path: "pending",
-            element: <Pending containerStyle={containerStyle} />,
+            ...PendingRoute,
           },
           {
             path: "completed",
-            element: <Completed containerStyle={containerStyle} />,
+            ...CompletedRoute,
           },
           {
             path: "/add-project",

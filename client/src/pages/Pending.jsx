@@ -1,12 +1,65 @@
-// eslint-disable-next-line react/prop-types
-const Pending = ({ containerStyle }) => {
+import { useLoaderData } from "react-router";
+import { Link } from "react-router-dom";
+import { getAllProjects } from "../api/projects";
+
+export default function Pending() {
+  const projects = useLoaderData();
+  const filteredPendingProjects = projects.filter((project) => {
+    return project.status === "pending";
+  });
+
+  console.log(filteredPendingProjects);
   return (
-    <div className={containerStyle}>
-      <div className="border-l-rose-300 border p-4 rounded-md w-full h-[50svh]">
-        Pending Projects
-      </div>
+    <div className="p-4 md:p-16 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
+      {filteredPendingProjects.length === 0 ? (
+        <p>Such Empty...</p>
+      ) : (
+        <div className="rounded-md w-full h-[50svh]">
+          <div className="flex flex-col gap-2 overflow-scroll">
+            <div className="p-4 rounded-md grid grid-cols-10 text-center bg-[--global-color-dark-light-bg]">
+              <h3>PROJECT</h3>
+              <h3>START</h3>
+              <h3>DUE</h3>
+              <h3>AM</h3>
+              <h3>DESIGN</h3>
+              <h3>COPY</h3>
+              <h3>SEO</h3>
+              <h3>DEV</h3>
+              <h3>SM</h3>
+              <h3>STATUS</h3>
+            </div>
+            <div className="rounded-md grid grid-cols-1 text-center gap-2">
+              {filteredPendingProjects.map((item) => (
+                <Link
+                  to={`/dashboard/projects/${item.id}`}
+                  key={item.id}
+                  className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center">
+                  <p>{item.title}</p>
+                  <p>{item.start}</p>
+                  <p>{item.due}</p>
+                  <p>{item.am}</p>
+                  <p>{item.design}</p>
+                  <p>{item.copy}</p>
+                  <p>{item.seo}</p>
+                  <p>{item.dev}</p>
+                  <p>{item.social}</p>
+                  <p>{item.status}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
-};
+}
 
-export default Pending;
+function loader({ request: { signal } }) {
+  return getAllProjects({ signal });
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const PendingRoute = {
+  loader,
+  element: <Pending />,
+};
