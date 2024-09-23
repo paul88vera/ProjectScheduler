@@ -54,3 +54,26 @@ button {
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+  padding: 0.5rem 1rem;
+  background-color: #ffffff;
+  color: var(--global-color-dark-accent);
+  border-radius: 3px;
+}
+input[type="text"]::placeholder,
+input[type="date"]::placeholder,
+input[type="number"]::placeholder {
+  color: #5c6296e1;
+}
+
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+}
+
+input[type="number"] {
+  max-width: 80px;
+}

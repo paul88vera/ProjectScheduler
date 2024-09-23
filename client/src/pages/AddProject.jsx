@@ -15,9 +15,35 @@ export default function AddProject() {
 async function action({ request }) {
   const formData = await request.formData();
   const title = formData.get("title");
+  const start = formData.get("start");
+  const status = formData.get("status");
+  const priority = formData.get("priority");
+  const due = formData.get("due");
+  const am = formData.get("am");
+  const amDays = formData.get("am-days");
+  const seo = formData.get("seo");
+  const seoDays = formData.get("seo-days");
+  const copy = formData.get("copy");
+  const copyDays = formData.get("copy-days");
+  const design = formData.get("design");
+  const designDays = formData.get("design-days");
+  const social = formData.get("social");
+  const socialDays = formData.get("social-days");
+  const dev = formData.get("dev");
+  const devDays = formData.get("dev-days");
 
   const errors = postFormValidator({
     title,
+    start,
+    status,
+    priority,
+    due,
+    am,
+    seo,
+    copy,
+    design,
+    social,
+    dev,
   });
 
   if (Object.keys(errors).length > 0) {
@@ -27,6 +53,22 @@ async function action({ request }) {
   const project = await createProject(
     {
       title,
+      start,
+      status,
+      priority,
+      due,
+      am,
+      amDays,
+      seo,
+      seoDays,
+      copy,
+      copyDays,
+      design,
+      designDays,
+      social,
+      socialDays,
+      dev,
+      devDays,
     },
     { signal: request.signal }
   );
