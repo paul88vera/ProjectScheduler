@@ -5,7 +5,7 @@ import { Calendar } from "../components/Calendar";
 export default function ProjectItem() {
   const item = useLoaderData();
   return (
-    <div className="p-4 md:p-16 grid grid-cols-1 gap-4 md:gap-8 w-full max-h-[100svh] overflow-y-scroll">
+    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-8 w-full max-h-[100svh] overflow-y-scroll">
       <div className="rounded-md w-full h-[50svh] overflow-x-scroll">
         <Calendar />
       </div>

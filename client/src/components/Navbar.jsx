@@ -5,6 +5,7 @@ import { IoFileTrayFullOutline } from "react-icons/io5";
 import { FcCollapse } from "react-icons/fc";
 import { FaPlus } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { memo } from "react";
 
 const iconStyle =
   "h-[5svh] md:h-[30px] text-[1.5rem] hover:text-blue-400 m-auto";
@@ -12,7 +13,7 @@ const iconStyle =
 const liStyle = "flex items-center justify-center w-full";
 
 // eslint-disable-next-line react/prop-types
-export const Navbar = ({ onClose }) => {
+export const Navbar = memo(function Navbar({ onClose }) {
   return (
     <div
       id="navbar_container"
@@ -51,4 +52,4 @@ export const Navbar = ({ onClose }) => {
       </Link>
     </div>
   );
-};
+});

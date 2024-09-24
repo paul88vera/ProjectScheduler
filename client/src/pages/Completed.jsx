@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { getAllProjects } from "../api/projects";
+import { formatDate } from "@fullcalendar/core/index.js";
 
 export default function Completed() {
   const projects = useLoaderData();
@@ -8,7 +9,7 @@ export default function Completed() {
   });
 
   return (
-    <div className="p-4 md:p-16 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
+    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
       {filteredCompletedProjects.length === 0 ? (
         <p>Such Empty... </p>
       ) : (
@@ -33,8 +34,20 @@ export default function Completed() {
                   key={item.id}
                   className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center">
                   <p>{item.title}</p>
-                  <p>{item.start}</p>
-                  <p>{item.due}</p>
+                  <p>
+                    {formatDate(item.start, {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </p>
+                  <p>
+                    {formatDate(item.due, {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </p>
                   <p>{item.am}</p>
                   <p>{item.design}</p>
                   <p>{item.copy}</p>

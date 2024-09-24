@@ -1,6 +1,7 @@
 import { getAllProjects, createProject } from "../api/projects";
 import { redirect, useActionData } from "react-router-dom";
 import PostForm, { postFormValidator } from "../components/PostForm";
+import { Calendar } from "@fullcalendar/core/index.js";
 
 export default function AddProject() {
   const errors = useActionData();
@@ -50,6 +51,18 @@ async function action({ request }) {
     return errors;
   }
 
+  // eslint-disable-next-line no-undef
+  const projectScheduler = new Calendar(projects.id, {
+    events: [
+      {
+        // this object will be "parsed" into an Event Object
+        title: title, // a property!
+        start: start, // a property!
+        end: due, // a property! ** see important note below about 'end' **
+      },
+    ],
+  });
+
   const project = await createProject(
     {
       title,
@@ -70,6 +83,7 @@ async function action({ request }) {
       dev,
       devDays,
     },
+    projectScheduler,
     { signal: request.signal }
   );
 
