@@ -11,7 +11,7 @@ export default function Completed() {
   return (
     <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
       {filteredCompletedProjects.length === 0 ? (
-        <p>Such Empty... </p>
+        <p>Wow! Such Empty... </p>
       ) : (
         <div className="rounded-md w-full h-[50svh]">
           <div className="flex flex-col gap-2 overflow-scroll">
@@ -32,8 +32,9 @@ export default function Completed() {
                 <Link
                   to={`/dashboard/projects/${item.id}`}
                   key={item.id}
-                  className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center">
-                  <p>{item.title}</p>
+                  className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center"
+                  title={item.title}>
+                  <p className="overflow-x-scroll text-nowrap">{item.title}</p>
                   <p>
                     {formatDate(item.start, {
                       year: "numeric",

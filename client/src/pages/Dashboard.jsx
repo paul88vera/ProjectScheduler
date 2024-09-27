@@ -30,7 +30,7 @@ export default function Dashboard() {
       className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-4 w-full md:max-h-[100svh] overflow-x-hidden">
       <div
         id="top_grid"
-        className=" rounded-md w-full md:overflow-x-scroll overflow-x-hidden">
+        className="rounded-md w-full md:overflow-x-scroll overflow-x-hidden max-h-full">
         <Calendar ref={calendarRef} prev={GoPrevious} next={GoNext} />
       </div>
       <div
@@ -47,7 +47,6 @@ export default function Dashboard() {
           <HiArrowSmRight />
         </button>
       </div>
-      {/* //! Need to make this into a component to fix the overflow-x-scroll functionality */}
       <div id="bottom_grid" className="rounded-md overflow-x-scroll">
         {filteredProjects.length === 0 ? (
           <p>Such Empty...</p>
@@ -70,8 +69,9 @@ export default function Dashboard() {
                 <Link
                   to={`/dashboard/projects/${item.id}`}
                   key={item.id}
-                  className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center">
-                  <p>{item.title}</p>
+                  className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center"
+                  title={item.title}>
+                  <p className="overflow-x-scroll text-nowrap">{item.title}</p>
                   <p>
                     {formatDate(item.start, {
                       year: "numeric",

@@ -1,12 +1,17 @@
+/* eslint-disable react/prop-types */
 import { Form, Link } from "react-router-dom";
 import FormGroup from "./FormGroup";
+import Option from "../props/Option";
 
-// eslint-disable-next-line react/prop-types
-export default function PostForm({ errors = {} }) {
+export default function PostForm({
+  buttonText,
+  defaultValues = {},
+  errors = {},
+}) {
   return (
     <Form
       method="post"
-      className="bg-[--global-color-dark-light-bg] p-4 md:p-8  rounded-md w-full md:h-[85svh] grid grid-cols-1 md:grid-cols-2 md:gap-16">
+      className="bg-[--global-color-dark-light-bg] p-4 md:p-8 rounded-md w-full md:h-[90svh] grid grid-cols-1 md:grid-cols-2 md:gap-16">
       <div className="flex flex-col gap-8">
         <FormGroup errorMessage={errors.title}>
           <input
@@ -14,12 +19,17 @@ export default function PostForm({ errors = {} }) {
             name="title"
             id="title"
             placeholder="Project Title"
+            defaultValue={defaultValues.title}
           />
         </FormGroup>
         <div className="flex flex-row gap-4">
           <label>
             status:{" "}
-            <select name="status" id="status">
+            <select
+              name="status"
+              id="status"
+              className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
+              defaultValue={defaultValues.status}>
               <option value="active" defaultChecked>
                 active
               </option>
@@ -30,7 +40,11 @@ export default function PostForm({ errors = {} }) {
 
           <label htmlFor="priority">
             priority:{" "}
-            <select name="priority" id="priority">
+            <select
+              name="priority"
+              id="priority"
+              className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
+              defaultValue={defaultValues.priority}>
               <option value="normal" defaultChecked>
                 normal
               </option>
@@ -42,74 +56,148 @@ export default function PostForm({ errors = {} }) {
           <FormGroup errorMessage={errors.start}>
             <label htmlFor="start">
               start date:
-              <input type="date" name="start" id="start" placeholder="start" />
+              <br />
+              <input
+                type="date"
+                name="start"
+                id="start"
+                placeholder="start"
+                className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
+                defaultValue={defaultValues.start}
+              />
             </label>
           </FormGroup>
           <FormGroup errorMessage={errors.due}>
             <label htmlFor="due">
               due date:
-              <input type="date" name="due" id="due" placeholder="due" />
+              <br />
+              <input
+                type="date"
+                name="due"
+                id="due"
+                placeholder="due"
+                className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
+                defaultValue={defaultValues.due}
+              />
             </label>
           </FormGroup>
         </div>
         <FormGroup errorMessage={errors.am}>
-          <input type="text" name="am" id="am" placeholder="account manager" />
+          <select
+            name="am"
+            id="am"
+            defaultValue={defaultValues.am}
+            placeholder="account manager">
+            <option value="" disabled selected>
+              account manager
+            </option>
+            <Option id={0} name="Kayla" />
+            <Option id={1} name="Brianna" />
+          </select>
           <input
             type="number"
             name="am-days"
             id="am-days"
-            placeholder="days"
-            defaultValue={7}
+            placeholder="7 days"
+            defaultValue={defaultValues.amDays}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.seo}>
-          <input type="text" name="seo" id="seo" placeholder="seo manager" />
+          <select
+            name="seo"
+            id="seo"
+            placeholder="seo manager"
+            defaultValue={defaultValues.seo}>
+            <option value="" disabled selected>
+              seo manager
+            </option>
+            <Option id={0} name="Jon" />
+          </select>
           <input
             type="number"
             name="seo-days"
             id="seo-days"
-            placeholder="days"
-            defaultValue={7}
+            placeholder="7 days"
+            defaultValue={defaultValues.seoDays}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.copy}>
-          <input type="text" name="copy" id="copy" placeholder="copy" />
+          <select
+            name="copy"
+            id="copy"
+            placeholder="copy"
+            defaultValue={defaultValues.copy}>
+            <option value="" disabled selected>
+              copy
+            </option>
+            <Option id={0} name="Lauren" />
+            <Option id={1} name="Esther" />
+          </select>
           <input
             type="number"
             name="copy-days"
             id="copy-days"
-            placeholder="days"
-            defaultValue={7}
+            placeholder="7 days"
+            defaultValue={defaultValues.copyDays}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.design}>
-          <input type="text" name="design" id="design" placeholder="design" />
+          <select
+            name="design"
+            id="design"
+            placeholder="design"
+            defaultValue={defaultValues.design}>
+            <option value="" disabled selected>
+              design
+            </option>
+            <Option id={0} name="Jess" />
+            <Option id={1} name="Emma" />
+          </select>
           <input
             type="number"
             name="design-days"
             id="design-days"
-            placeholder="days"
-            defaultValue={7}
+            placeholder="7 days"
+            defaultValue={defaultValues.designDays}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.social}>
-          <input type="text" name="social" id="social" placeholder="social" />
+          <select
+            name="social"
+            id="social"
+            placeholder="social"
+            defaultValue={defaultValues.social}>
+            <option value="" disabled selected>
+              social
+            </option>
+            <Option id={0} name="Chelsea" />
+          </select>
           <input
             type="number"
             name="social-days"
             id="social-days"
-            placeholder="days"
-            defaultValue={3}
+            placeholder="3 days"
+            defaultValue={defaultValues.socialDays}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.dev}>
-          <input type="text" name="dev" id="dev" placeholder="dev" />
+          <select
+            name="dev"
+            id="dev"
+            placeholder="dev"
+            defaultValue={defaultValues.dev}>
+            <option value="" disabled selected>
+              dev
+            </option>
+            <Option id={0} name="Paul" />
+            <Option id={1} name="Lori" />
+          </select>
           <input
             type="number"
             name="dev-days"
             id="dev-days"
-            placeholder="days"
-            defaultValue={10}
+            placeholder="10 days"
+            defaultValue={defaultValues.devDays}
           />
         </FormGroup>
       </div>
@@ -124,7 +212,7 @@ export default function PostForm({ errors = {} }) {
             cancel
           </Link>
           <button className="p-4 bg-[--global-color-light-accent] rounded-md font-bold hover:bg-[--global-color-dark-accent]">
-            create
+            {buttonText}
           </button>
         </div>
       </div>

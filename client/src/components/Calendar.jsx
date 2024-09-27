@@ -11,13 +11,6 @@ export const Calendar = forwardRef(function Calendar(props, ref) {
   const PreviousCalendar = useRef(null);
   const FutureCalendar = useRef(null);
 
-  // This will make the calendars start at the correct month
-  // const InitialPreviousCalendar = () => {
-  //   const calendarApi = calendarApi.current.getApi() - 1;
-
-  // };
-  // const InitialFutureCalendar = () => {};
-
   return (
     <div className="snap-mandatory snap-x grid grid-cols-3 align-middle gap-8 h-full min-w-[1465px] lg:min-w-0">
       <div className="snap-center hover:snap-x touch-pan-x shrink-0 snap-always md:flex justify-center items-center bg-[--global-color-dark-light-bg] rounded-md p-2 hidden">

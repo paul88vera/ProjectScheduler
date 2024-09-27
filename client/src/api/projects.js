@@ -29,3 +29,11 @@ export function createProject(data, options) {
 export function updateProject(id, data, options) {
   return baseApi.put(`projects/${id}`, data, options).then((res) => res.data);
 }
+// @route    DELETE /api/projects/:id
+// @desc     Delete project by id
+// @access   Private - Public For Now
+export function deleteProject(id) {
+  return baseApi.put(`projects/${id}`, { method: "DELETE" }).then(() => {
+    window.location.replace("/dashboard");
+  });
+}

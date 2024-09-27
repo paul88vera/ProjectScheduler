@@ -56,26 +56,33 @@ button {
 }
 
 input[type="text"],
-input[type="date"],
-input[type="number"] {
+/* input[type="date"], */
+input[type="number"],
+select {
   padding: 0.5rem 1rem;
   background-color: #ffffff;
   color: var(--global-color-dark-accent);
   border-radius: 3px;
 }
 input[type="text"]::placeholder,
-input[type="date"]::placeholder,
-input[type="number"]::placeholder {
+/* input[type="date"]::placeholder, */
+input[type="number"]::placeholder,
+select::placeholder {
   color: #5c6296e1;
 }
 
 input[type="text"],
-input[type="date"] {
+select {
   width: 100%;
 }
 
+input[type="date"] {
+  max-width: 155px;
+  margin-left: 5px;
+}
+
 input[type="number"] {
-  max-width: 80px;
+  max-width: 110px;
 }
 
 .fc-theme-standard {

@@ -1,9 +1,14 @@
-import { getAllProjects, createProject } from "../api/projects";
-import { getAllUsers } from "../api/users";
-import { redirect, useActionData, useNavigation } from "react-router-dom";
+import {
+  redirect,
+  useActionData,
+  useLoaderData,
+  useNavigation,
+} from "react-router-dom";
+import { deleteProject, getProject, updateProject } from "../api/projects";
 import PostForm, { postFormValidator } from "../components/PostForm";
 
-export default function AddProject() {
+export default function EditProject() {
+  const project = useLoaderData();
   const errors = useActionData();
   const { state } = useNavigation();
   const isSubmitting = state === "submitting";
@@ -13,13 +18,19 @@ export default function AddProject() {
       <PostForm
         isSubmitting={isSubmitting}
         errors={errors}
-        buttonText="create"
+        defaultValues={project}
+        buttonText={"save"}
       />
+      <div className="absolute bottom-4 right-4 z-50">
+        <button onClick={() => deleteProject(project.id)}>
+          Delete Project
+        </button>
+      </div>
     </div>
   );
 }
 
-async function action({ request }) {
+async function action({ request, params: { id } }) {
   const formData = await request.formData();
   const title = formData.get("title");
   const start = formData.get("start");
@@ -57,19 +68,8 @@ async function action({ request }) {
     return errors;
   }
 
-  //// eslint-disable-next-line no-undef
-  // const projectScheduler = new Calendar(projects.id, {
-  //   events: [
-  //     {
-  //       // this object will be "parsed" into an Event Object
-  //       title: title, // a property!
-  //       start: start, // a property!
-  //       end: due, // a property! ** see important note below about 'end' **
-  //     },
-  //   ],
-  // });
-
-  const project = await createProject(
+  const updatedProject = await updateProject(
+    id,
     {
       title,
       start,
@@ -89,22 +89,19 @@ async function action({ request }) {
       dev,
       devDays,
     },
-    // projectScheduler,
     { signal: request.signal }
   );
 
-  return redirect(`/dashboard/projects/${project.id}`);
+  return redirect(`/dashboard/projects/${updatedProject.id}/`);
 }
 
-async function loader({ request: { signal } }) {
-  const projects = getAllProjects({ signal });
-  const users = getAllUsers({ signal });
-  return { users: await users, projects: projects };
+function loader({ request: { signal }, params: { id } }) {
+  return getProject(id, { signal });
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const NewProject = {
-  loader,
+export const EditProjectRoute = {
   action,
-  element: <AddProject />,
+  loader,
+  element: <EditProject />,
 };

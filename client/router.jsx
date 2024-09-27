@@ -7,6 +7,7 @@ import { CompletedRoute } from "./src/pages/Completed";
 import { NewProject } from "./src/pages/AddProject";
 import { DashboardRoute } from "./src/pages/Dashboard";
 import { ProjectItemRoute } from "./src/pages/ProjectItem";
+import { EditProjectRoute } from "./src/pages/EditProject";
 
 // * CSS for Pages that are not Routes yet */
 // const containerStyle =
@@ -34,6 +35,10 @@ export const router = createBrowserRouter([
                   {
                     index: true,
                     ...ProjectItemRoute,
+                  },
+                  {
+                    path: "edit",
+                    ...EditProjectRoute,
                   },
                 ],
               },
