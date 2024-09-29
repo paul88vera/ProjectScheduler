@@ -8,10 +8,11 @@ import { NewProject } from "./src/pages/AddProject";
 import { DashboardRoute } from "./src/pages/Dashboard";
 import { ProjectItemRoute } from "./src/pages/ProjectItem";
 import { EditProjectRoute } from "./src/pages/EditProject";
+import { ActiveProjectsRoute } from "./src/pages/ActiveProjects";
 
 // * CSS for Pages that are not Routes yet */
 // const containerStyle =
-//   "p-4 md:p-16 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll";
+//   "p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full h-full overflow-y-scroll";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
         errorElement: <ErrorMessage />,
         children: [
           { index: true, element: <Navigate to="/dashboard" /> },
+          {
+            path: "overview",
+            ...ActiveProjectsRoute,
+          },
           {
             path: "dashboard",
             children: [

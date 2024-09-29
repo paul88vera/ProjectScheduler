@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router";
 import { getProject } from "../api/projects";
-import { Calendar } from "../components/Calendar";
+// import { Calendar } from "../components/Calendar";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -11,9 +11,9 @@ export default function ProjectItem() {
       <Link to={`/dashboard/projects/${item.id}/edit`}>
         <FaEdit className="absolute right-2 top-2 cursor-pointer" />
       </Link>
-      <div className="rounded-md w-full h-[50svh] overflow-x-scroll">
+      {/* <div className="rounded-md w-full h-[50svh] overflow-x-scroll">
         <Calendar />
-      </div>
+      </div> */}
       <div className="px-4 rounded-md w-full h-[50svh]">
         Project Information Bar: {item.title}
       </div>

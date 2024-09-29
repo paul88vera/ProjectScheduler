@@ -51,6 +51,15 @@ export default function PostForm({
               <option value="priority">priority</option>
             </select>
           </label>
+          <label htmlFor="colors">
+            color:
+            <input
+              type="color"
+              name="colors"
+              id="colors"
+              defaultValue={defaultValues.colors}
+            />
+          </label>
         </div>
         <div className="flex flex-row flex-nowrap gap-0 max-w-lg justify-start">
           <FormGroup errorMessage={errors.start}>
@@ -88,7 +97,7 @@ export default function PostForm({
             id="am"
             defaultValue={defaultValues.am}
             placeholder="account manager">
-            <option value="" disabled selected>
+            <option value="" disabled>
               account manager
             </option>
             <Option id={0} name="Kayla" />
@@ -108,7 +117,7 @@ export default function PostForm({
             id="seo"
             placeholder="seo manager"
             defaultValue={defaultValues.seo}>
-            <option value="" disabled selected>
+            <option value="" disabled>
               seo manager
             </option>
             <Option id={0} name="Jon" />
@@ -127,7 +136,7 @@ export default function PostForm({
             id="copy"
             placeholder="copy"
             defaultValue={defaultValues.copy}>
-            <option value="" disabled selected>
+            <option value="" disabled>
               copy
             </option>
             <Option id={0} name="Lauren" />
@@ -147,7 +156,7 @@ export default function PostForm({
             id="design"
             placeholder="design"
             defaultValue={defaultValues.design}>
-            <option value="" disabled selected>
+            <option value="" disabled>
               design
             </option>
             <Option id={0} name="Jess" />
@@ -167,7 +176,7 @@ export default function PostForm({
             id="social"
             placeholder="social"
             defaultValue={defaultValues.social}>
-            <option value="" disabled selected>
+            <option value="" disabled>
               social
             </option>
             <Option id={0} name="Chelsea" />
@@ -186,7 +195,7 @@ export default function PostForm({
             id="dev"
             placeholder="dev"
             defaultValue={defaultValues.dev}>
-            <option value="" disabled selected>
+            <option value="" disabled>
               dev
             </option>
             <Option id={0} name="Paul" />
@@ -231,6 +240,7 @@ export function postFormValidator({
   design,
   social,
   dev,
+  colors,
 }) {
   const errors = {};
 
@@ -261,6 +271,8 @@ export function postFormValidator({
   if (dev === "") {
     errors.dev = "Required";
   }
-
+  if (colors === "#000000" || "") {
+    errors.colors = "Required";
+  }
   return errors;
 }

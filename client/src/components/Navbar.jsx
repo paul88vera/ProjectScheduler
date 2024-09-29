@@ -1,5 +1,6 @@
 import { MdOutlineSpaceDashboard } from "react-icons/md";
-// import { AiOutlineFieldTime } from "react-icons/ai";
+import { LuCalendarSearch } from "react-icons/lu";
+
 import { RiRestTimeLine } from "react-icons/ri";
 import { IoFileTrayFullOutline } from "react-icons/io5";
 import { FcCollapse } from "react-icons/fc";
@@ -24,6 +25,11 @@ export const Navbar = memo(function Navbar({ onClose }) {
         <FcCollapse title="Hide Navbar" className={iconStyle} />
       </button>
       <ul className="h-[10svh] md:h-[90%] flex flex-row md:flex-col flex-nowrap justify-center align-middle p-0 gap-2 md:gap-8 text-center w-full">
+        <li className={liStyle}>
+          <Link to="/overview">
+            <LuCalendarSearch title="Overview" className={iconStyle} />
+          </Link>
+        </li>
         <li className={liStyle}>
           <Link to="/dashboard">
             <MdOutlineSpaceDashboard title="Dashboard" className={iconStyle} />

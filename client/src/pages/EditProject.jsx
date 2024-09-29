@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { deleteProject, getProject, updateProject } from "../api/projects";
 import PostForm, { postFormValidator } from "../components/PostForm";
+// import { deleteEvent } from "../api/events";
 
 export default function EditProject() {
   const project = useLoaderData();
@@ -49,6 +50,7 @@ async function action({ request, params: { id } }) {
   const socialDays = formData.get("social-days");
   const dev = formData.get("dev");
   const devDays = formData.get("dev-days");
+  const colors = formData.get("colors");
 
   const errors = postFormValidator({
     title,
@@ -62,11 +64,18 @@ async function action({ request, params: { id } }) {
     design,
     social,
     dev,
+    colors,
   });
 
   if (Object.keys(errors).length > 0) {
     return errors;
   }
+
+  // const updatedEvent = await updateEvent(
+  //   id,
+  //   { title, start, due },
+  //   { signal: request.signal }
+  // );
 
   const updatedProject = await updateProject(
     id,
@@ -88,6 +97,7 @@ async function action({ request, params: { id } }) {
       socialDays,
       dev,
       devDays,
+      colors,
     },
     { signal: request.signal }
   );
@@ -96,7 +106,9 @@ async function action({ request, params: { id } }) {
 }
 
 function loader({ request: { signal }, params: { id } }) {
-  return getProject(id, { signal });
+  const project = getProject(id, { signal });
+  // const event = getEvent(id, { signal });
+  return project;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
