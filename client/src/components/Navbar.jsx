@@ -18,7 +18,7 @@ export const Navbar = memo(function Navbar({ onClose }) {
   return (
     <div
       id="navbar_container"
-      className="h-[10svh] md:h-[100svh] relative bg-[--global-color-dark-light-bg] p-2 gap-4 md:gap-10 flex flex-row md:flex-col align-middle items-center justify-center">
+      className="h-[10svh] md:h-[100svh] fixed z-50 md:z-10 bottom-0 w-full md:w-auto md:relative bg-[--global-color-dark-light-bg] p-2 gap-4 md:gap-10 flex flex-row md:flex-col align-middle items-center justify-center">
       <button
         className="text-white text-[1.5rem] m-auto hidden md:block"
         onClick={onClose}>

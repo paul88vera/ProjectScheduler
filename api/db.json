@@ -116,11 +116,11 @@
   "clients": [],
   "projects": [
     {
-      "title": "New Thing",
-      "start": "2024-10-01",
+      "title": "Dental Retreat",
+      "start": "2024-09-30",
+      "due": "2024-10-11",
       "status": "active",
       "priority": "normal",
-      "due": "2024-11-08",
       "am": "Kayla",
       "amDays": "7",
       "seo": "Jon",
@@ -133,15 +133,15 @@
       "socialDays": "3",
       "dev": "Paul",
       "devDays": "10",
-      "colors": "#cf6868",
+      "colors": "#4c00ff",
       "id": 1
     },
     {
-      "title": "Newer Project",
+      "title": "Acara Project",
       "start": "2024-10-08",
       "status": "active",
       "priority": "normal",
-      "due": "2024-11-06",
+      "due": "2024-10-18",
       "am": "Kayla",
       "amDays": "7",
       "seo": "Jon",
@@ -154,29 +154,8 @@
       "socialDays": "3",
       "dev": "Paul",
       "devDays": "10",
-      "colors": "#c960d7",
+      "colors": "#998500",
       "id": 2
-    },
-    {
-      "title": "Newest 2 Project",
-      "start": "2024-10-15",
-      "status": "active",
-      "priority": "normal",
-      "due": "2024-11-01",
-      "am": "Kayla",
-      "amDays": "7",
-      "seo": "Jon",
-      "seoDays": "7",
-      "copy": "Lauren",
-      "copyDays": "7",
-      "design": "Jess",
-      "designDays": "7",
-      "social": "Chelsea",
-      "socialDays": "3",
-      "dev": "Paul",
-      "devDays": "10",
-      "colors": "#2ecc72",
-      "id": 3
     }
   ]
 }

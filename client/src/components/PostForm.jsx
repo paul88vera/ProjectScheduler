@@ -11,8 +11,9 @@ export default function PostForm({
   return (
     <Form
       method="post"
-      className="bg-[--global-color-dark-light-bg] p-4 md:p-8 rounded-md w-full md:h-[90svh] grid grid-cols-1 md:grid-cols-2 md:gap-16">
-      <div className="flex flex-col gap-8">
+      id="form-container"
+      className="bg-[--global-color-dark-light-bg] p-4 md:p-8 rounded-md w-full md:max-w-[60vw] grid grid-cols-1 md:grid-cols-1 md:gap-16 my-0 mx-auto">
+      <div className="flex flex-col gap-4">
         <FormGroup errorMessage={errors.title}>
           <input
             type="text"
@@ -53,6 +54,7 @@ export default function PostForm({
           </label>
           <label htmlFor="colors">
             color:
+            <br />
             <input
               type="color"
               name="colors"
@@ -209,10 +211,20 @@ export default function PostForm({
             defaultValue={defaultValues.devDays}
           />
         </FormGroup>
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
+          <Link
+            to={`/dashboard`}
+            className="p-4 bg-[--global-color-dark-text] text-center rounded-md font-bold hover:bg-[--global-color-dark-accent]">
+            cancel
+          </Link>
+          <button className="p-4 bg-[--global-color-light-accent] rounded-md font-bold hover:bg-[--global-color-dark-accent]">
+            {buttonText}
+          </button>
+        </div>
       </div>
 
       {/* Form Buttons */}
-      <div className="flex flex-col gap-8 h-full justify-between">
+      {/* <div className="flex flex-col gap-8 h-full justify-between">
         <FormGroup></FormGroup>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           <Link
@@ -224,7 +236,7 @@ export default function PostForm({
             {buttonText}
           </button>
         </div>
-      </div>
+      </div> */}
     </Form>
   );
 }

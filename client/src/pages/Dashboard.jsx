@@ -28,26 +28,8 @@ export default function Dashboard() {
     <div
       id="dashboard_container"
       className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-4 w-full md:max-h-[100svh] overflow-x-hidden">
-      {/* <div
-        id="top_grid"
-        className="rounded-md w-full md:overflow-x-scroll overflow-x-hidden max-h-full">
-        <Calendar ref={calendarRef} prev={GoPrevious} next={GoNext} />
-      </div> */}
-      {/* <div
-        id="arrows"
-        className="w-full rounded-md text-center hidden md:block">
-        <button
-          className="button rounded-md hover:bg-[--global-color-light-accent] text-[1.5rem]"
-          onClick={GoPrevious}>
-          <HiArrowSmLeft />
-        </button>
-        <button
-          className="button rounded-md hover:bg-[--global-color-light-accent] text-[1.5rem]"
-          onClick={GoNext}>
-          <HiArrowSmRight />
-        </button>
-      </div> */}
       <div id="bottom_grid" className="rounded-md overflow-x-scroll">
+        <h1 className="text-2xl pb-4">Active Projects</h1>
         {filteredProjects.length === 0 ? (
           <p>Wow! Such Empty...</p>
         ) : (

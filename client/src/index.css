@@ -88,3 +88,26 @@ input[type="number"] {
 .fc-theme-standard {
   width: 100%;
 }
+
+.fc .fc-multimonth-daygrid {
+  background: none;
+}
+
+.fc-theme-standard .fc-popover,
+.fc .fc-multimonth-singlecol .fc-multimonth-header {
+  background: var(--global-color-dark-light-bg);
+}
+
+.fc-event-title {
+  font-weight: 600;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 568px) {
+  .fc .fc-toolbar-title {
+    font-size: 2rem;
+  }
+}

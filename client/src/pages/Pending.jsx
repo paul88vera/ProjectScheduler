@@ -10,7 +10,8 @@ export default function Pending() {
   });
 
   return (
-    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
+    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-8 w-full max-h-[100svh] overflow-y-scroll">
+      <h1 className="text-2xl">Pending Projects</h1>
       {filteredPendingProjects.length === 0 ? (
         <p>Wow! Such Empty...</p>
       ) : (

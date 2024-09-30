@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import { deleteProject, getProject, updateProject } from "../api/projects";
 import PostForm, { postFormValidator } from "../components/PostForm";
+import { FaTrashAlt } from "react-icons/fa";
+
 // import { deleteEvent } from "../api/events";
 
 export default function EditProject() {
@@ -15,17 +17,18 @@ export default function EditProject() {
   const isSubmitting = state === "submitting";
 
   return (
-    <div className="p-4 md:p-16 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
+    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
       <PostForm
         isSubmitting={isSubmitting}
         errors={errors}
         defaultValues={project}
         buttonText={"save"}
       />
-      <div className="absolute bottom-4 right-4 z-50">
-        <button onClick={() => deleteProject(project.id)}>
-          Delete Project
-        </button>
+      <div className="absolute top-4 right-4 z-50">
+        <FaTrashAlt
+          onClick={() => deleteProject(project.id)}
+          className="text-[--global-color-priority] text-[1.7rem] cursor-pointer hover:text-[2rem] transition-all  ease-in-out"
+        />
       </div>
     </div>
   );

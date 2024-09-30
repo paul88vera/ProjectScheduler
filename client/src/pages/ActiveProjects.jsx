@@ -1,6 +1,7 @@
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import multiMonthPlugin from "@fullcalendar/multimonth";
 import FullCalendar from "@fullcalendar/react";
 import { useLoaderData } from "react-router";
 import { getAllProjects } from "../api/projects";
@@ -29,17 +30,21 @@ export default function ActiveProjects() {
     }
   }
   getOL();
-  console.log(newEventList);
   return (
-    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full overflow-y-scroll">
+    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
       <div id="calendar" className="p-2 rounded-md w-full max-h-[100svh]">
         <FullCalendar
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+          plugins={[
+            dayGridPlugin,
+            timeGridPlugin,
+            multiMonthPlugin,
+            interactionPlugin,
+          ]}
           initialView="dayGridMonth"
           headerToolbar={{
             left: "today,prev,next",
             center: "title",
-            right: "dayGridMonth,dayGridWeek,dayGridYear",
+            right: "multiMonthYear,dayGridMonth,dayGridWeek",
           }}
           weekends={true}
           events={newEventList}
