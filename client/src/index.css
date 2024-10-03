@@ -111,3 +111,10 @@ input[type="number"] {
     font-size: 2rem;
   }
 }
+
+.error-message {
+  color: var(--global-color-priority);
+  position: relative;
+  top: 30px;
+  left: 0;
+}

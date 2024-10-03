@@ -11,9 +11,9 @@ export default function ActiveProjects() {
   const filteredProjects = projects.filter((project) => {
     return project.status === "active";
   });
-  const newEventList = [];
 
   // function to put active projects in an array to embed in the calendar
+  const newEventList = [];
   let counter = 0;
 
   function getOL() {
@@ -32,7 +32,9 @@ export default function ActiveProjects() {
   getOL();
   return (
     <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
-      <div id="calendar" className="p-2 rounded-md w-full max-h-[100svh]">
+      <div
+        id="calendar"
+        className="hidden md:block p-2 rounded-md w-full max-h-[100svh]">
         <FullCalendar
           plugins={[
             dayGridPlugin,
@@ -48,6 +50,27 @@ export default function ActiveProjects() {
           }}
           weekends={true}
           events={newEventList}
+        />
+      </div>
+      <div
+        id="calendar-mobile"
+        className="block md:hidden p-2 rounded-md w-full max-h-[100svh]">
+        <FullCalendar
+          plugins={[
+            dayGridPlugin,
+            timeGridPlugin,
+            multiMonthPlugin,
+            interactionPlugin,
+          ]}
+          initialView="dayGridMonth"
+          headerToolbar={{
+            left: "today,next",
+            center: "title",
+            right: "multiMonthYear,dayGridMonth",
+          }}
+          weekends={true}
+          events={newEventList}
+          editable={true}
         />
       </div>
     </div>

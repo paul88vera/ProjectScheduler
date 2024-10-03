@@ -1,13 +1,22 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { Form, Link } from "react-router-dom";
 import FormGroup from "./FormGroup";
 import Option from "../props/Option";
+import { useState } from "react";
 
 export default function PostForm({
   buttonText,
   defaultValues = {},
   errors = {},
 }) {
+  const [amDayState, setAmDayState] = useState();
+  const [seoDayState, setSeoDayState] = useState();
+  const [copyDayState, setCopyDayState] = useState();
+  const [designDayState, setDesignDayState] = useState();
+  const [socialDayState, setSocialDayState] = useState();
+  const [devDayState, setDevDayState] = useState();
+
   return (
     <Form
       method="post"
@@ -23,46 +32,49 @@ export default function PostForm({
             defaultValue={defaultValues.title}
           />
         </FormGroup>
-        <div className="flex flex-row gap-4">
-          <label>
-            status:{" "}
-            <select
-              name="status"
-              id="status"
-              className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
-              defaultValue={defaultValues.status}>
-              <option value="active" defaultChecked>
-                active
-              </option>
-              <option value="pending">pending</option>
-              <option value="completed">completed</option>
-            </select>
-          </label>
+        <FormGroup errorMessage={errors.colors}>
+          <div className="flex flex-row gap-4">
+            <label>
+              status:{" "}
+              <select
+                name="status"
+                id="status"
+                className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
+                defaultValue={defaultValues.status}>
+                <option value="active" defaultChecked>
+                  active
+                </option>
+                <option value="pending">pending</option>
+                <option value="completed">completed</option>
+              </select>
+            </label>
 
-          <label htmlFor="priority">
-            priority:{" "}
-            <select
-              name="priority"
-              id="priority"
-              className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
-              defaultValue={defaultValues.priority}>
-              <option value="normal" defaultChecked>
-                normal
-              </option>
-              <option value="priority">priority</option>
-            </select>
-          </label>
-          <label htmlFor="colors">
-            color:
-            <br />
-            <input
-              type="color"
-              name="colors"
-              id="colors"
-              defaultValue={defaultValues.colors}
-            />
-          </label>
-        </div>
+            <label htmlFor="priority">
+              priority:{" "}
+              <select
+                name="priority"
+                id="priority"
+                className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
+                defaultValue={defaultValues.priority}>
+                <option value="normal" defaultChecked>
+                  normal
+                </option>
+                <option value="priority">priority</option>
+              </select>
+            </label>
+            <label htmlFor="colors">
+              color:
+              <br />
+              <input
+                type="color"
+                name="colors"
+                id="colors"
+                defaultValue={defaultValues.colors || "#444455"}
+                required
+              />
+            </label>
+          </div>
+        </FormGroup>
         <div className="flex flex-row flex-nowrap gap-0 max-w-lg justify-start">
           <FormGroup errorMessage={errors.start}>
             <label htmlFor="start">
@@ -97,7 +109,7 @@ export default function PostForm({
           <select
             name="am"
             id="am"
-            defaultValue={defaultValues.am}
+            defaultValue={defaultValues.am || ""}
             placeholder="account manager">
             <option value="" disabled>
               account manager
@@ -110,7 +122,14 @@ export default function PostForm({
             name="am-days"
             id="am-days"
             placeholder="7 days"
-            defaultValue={defaultValues.amDays}
+            min={4}
+            max={10}
+            onChange={(e) => {
+              if (!defaultValues.amDays) {
+                setAmDayState(e.target.value);
+              }
+            }}
+            defaultValue={defaultValues.amDays || 7}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.seo}>
@@ -118,7 +137,7 @@ export default function PostForm({
             name="seo"
             id="seo"
             placeholder="seo manager"
-            defaultValue={defaultValues.seo}>
+            defaultValue={defaultValues.seo || ""}>
             <option value="" disabled>
               seo manager
             </option>
@@ -129,7 +148,14 @@ export default function PostForm({
             name="seo-days"
             id="seo-days"
             placeholder="7 days"
-            defaultValue={defaultValues.seoDays}
+            min={4}
+            max={12}
+            onChange={(e) => {
+              if (!defaultValues.seoDays) {
+                setSeoDayState(e.target.value);
+              }
+            }}
+            defaultValue={defaultValues.seoDays || 7}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.copy}>
@@ -137,9 +163,9 @@ export default function PostForm({
             name="copy"
             id="copy"
             placeholder="copy"
-            defaultValue={defaultValues.copy}>
+            defaultValue={defaultValues.copy || ""}>
             <option value="" disabled>
-              copy
+              copy writer
             </option>
             <Option id={0} name="Lauren" />
             <Option id={1} name="Esther" />
@@ -149,7 +175,14 @@ export default function PostForm({
             name="copy-days"
             id="copy-days"
             placeholder="7 days"
-            defaultValue={defaultValues.copyDays}
+            min={3}
+            max={12}
+            onChange={(e) => {
+              if (!defaultValues.copyDays) {
+                setCopyDayState(e.target.value);
+              }
+            }}
+            defaultValue={defaultValues.copyDays || 7}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.design}>
@@ -157,9 +190,9 @@ export default function PostForm({
             name="design"
             id="design"
             placeholder="design"
-            defaultValue={defaultValues.design}>
+            defaultValue={defaultValues.design || ""}>
             <option value="" disabled>
-              design
+              designer
             </option>
             <Option id={0} name="Jess" />
             <Option id={1} name="Emma" />
@@ -169,7 +202,14 @@ export default function PostForm({
             name="design-days"
             id="design-days"
             placeholder="7 days"
-            defaultValue={defaultValues.designDays}
+            min={4}
+            max={12}
+            onChange={(e) => {
+              if (!defaultValues.designDays) {
+                setDesignDayState(e.target.value);
+              }
+            }}
+            defaultValue={defaultValues.designDays || 7}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.social}>
@@ -177,9 +217,9 @@ export default function PostForm({
             name="social"
             id="social"
             placeholder="social"
-            defaultValue={defaultValues.social}>
+            defaultValue={defaultValues.social || ""}>
             <option value="" disabled>
-              social
+              social media manager
             </option>
             <Option id={0} name="Chelsea" />
           </select>
@@ -188,7 +228,14 @@ export default function PostForm({
             name="social-days"
             id="social-days"
             placeholder="3 days"
-            defaultValue={defaultValues.socialDays}
+            min={3}
+            max={5}
+            onChange={(e) => {
+              if (!defaultValues.socialDays) {
+                setSocialDayState(e.target.value);
+              }
+            }}
+            defaultValue={defaultValues.socialDays || 3}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.dev}>
@@ -196,9 +243,9 @@ export default function PostForm({
             name="dev"
             id="dev"
             placeholder="dev"
-            defaultValue={defaultValues.dev}>
+            defaultValue={defaultValues.dev || ""}>
             <option value="" disabled>
-              dev
+              developer
             </option>
             <Option id={0} name="Paul" />
             <Option id={1} name="Lori" />
@@ -208,7 +255,14 @@ export default function PostForm({
             name="dev-days"
             id="dev-days"
             placeholder="10 days"
-            defaultValue={defaultValues.devDays}
+            min={4}
+            max={12}
+            onChange={(e) => {
+              if (!defaultValues.devDays) {
+                setDevDayState(e.target.value);
+              }
+            }}
+            defaultValue={defaultValues.devDays || 10}
           />
         </FormGroup>
         <div className="grid grid-cols-2 md:grid-cols-2 gap-4">
@@ -265,25 +319,25 @@ export function postFormValidator({
   if (due === "") {
     errors.due = "Required";
   }
-  if (am === "") {
+  if (am === null) {
     errors.am = "Required";
   }
-  if (seo === "") {
+  if (seo === null) {
     errors.seo = "Required";
   }
-  if (copy === "") {
+  if (copy === null) {
     errors.copy = "Required";
   }
-  if (design === "") {
+  if (design === null) {
     errors.design = "Required";
   }
-  if (social === "") {
+  if (social === null) {
     errors.social = "Required";
   }
-  if (dev === "") {
+  if (dev === null) {
     errors.dev = "Required";
   }
-  if (colors === "#000000" || "") {
+  if (colors === null) {
     errors.colors = "Required";
   }
   return errors;
