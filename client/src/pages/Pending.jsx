@@ -5,13 +5,14 @@ import { formatDate } from "@fullcalendar/core/index.js";
 
 export default function Pending() {
   const projects = useLoaderData();
-  const filteredPendingProjects = projects.filter((project) => {
-    return project.status === "pending";
-  });
+  // const filteredPendingProjects = projects.filter((project) => {
+  //   return project.status === "pending";
+  // });
+  const filteredPendingProjects = projects;
 
   return (
-    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-8 w-full max-h-[100svh] overflow-y-scroll">
-      <h1 className="text-2xl">Pending Projects</h1>
+    <div className="p-4 md:p-8 w-full max-h-[100svh] overflow-y-scroll">
+      <h1 className="text-2xl pb-4">Pending Projects</h1>
       {filteredPendingProjects.length === 0 ? (
         <p>Wow! Such Empty...</p>
       ) : (

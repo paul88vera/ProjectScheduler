@@ -8,8 +8,6 @@ import { deleteProject, getProject, updateProject } from "../api/projects";
 import PostForm, { postFormValidator } from "../components/PostForm";
 import { FaTrashAlt } from "react-icons/fa";
 
-// import { deleteEvent } from "../api/events";
-
 export default function EditProject() {
   const project = useLoaderData();
   const errors = useActionData();
@@ -74,12 +72,6 @@ async function action({ request, params: { id } }) {
     return errors;
   }
 
-  // const updatedEvent = await updateEvent(
-  //   id,
-  //   { title, start, due },
-  //   { signal: request.signal }
-  // );
-
   const updatedProject = await updateProject(
     id,
     {
@@ -110,7 +102,6 @@ async function action({ request, params: { id } }) {
 
 function loader({ request: { signal }, params: { id } }) {
   const project = getProject(id, { signal });
-  // const event = getEvent(id, { signal });
   return project;
 }
 

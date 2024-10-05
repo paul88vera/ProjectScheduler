@@ -2,9 +2,11 @@
   "name": "projectscheduler",
   "version": "1.0.0",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "devApi": "concurrently \"cd client && npm run dev\" \"cd api && npm run dev\""
+    "devApi": "concurrently \"cd client && npm run dev\" \"cd api && npm run dev\"",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\""
   },
   "author": "",
   "license": "ISC",

@@ -1,6 +1,5 @@
 import { useLoaderData } from "react-router";
 import { getProject } from "../api/projects";
-// import { Calendar } from "../components/Calendar";
 import { FaEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { formatDate } from "@fullcalendar/core/index.js";
@@ -75,8 +74,9 @@ export default function ProjectItem() {
   );
 }
 
-function loader({ request: { signal }, params: { id } }) {
-  return getProject(id, { signal });
+async function loader({ request: { signal }, params: { id } }) {
+  const item = getProject(id, { signal });
+  return { item: await item };
 }
 
 // eslint-disable-next-line react-refresh/only-export-components

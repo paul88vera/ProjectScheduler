@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 
 const RootLayout = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [backendData, setBackendData] = useState([{}]);
 
   const toggleNavbar = () => {
     setIsOpen((current) => !current);
   };
+
+  useEffect(() => {
+    try {
+      fetch("/projects").then((data) => setBackendData(data));
+    } catch (err) {
+      console.error(err, "that's not right...");
+    }
+  }, []);
 
   return (
     <>
@@ -22,7 +31,7 @@ const RootLayout = () => {
           </button>
         ) : null}
         {isOpen ? <Navbar onClose={toggleNavbar} /> : null}
-        <Outlet />
+        <Outlet {...backendData} />
       </div>
     </>
   );

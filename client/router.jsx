@@ -1,7 +1,6 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import RootLayout from "./src/layouts/RootLayout";
 import ErrorMessage from "./src/pages/ErrorMessage";
-// import ActiveProjects from "./src/pages/ActiveProjects";
 import { PendingRoute } from "./src/pages/Pending";
 import { CompletedRoute } from "./src/pages/Completed";
 import { NewProject } from "./src/pages/AddProject";
@@ -9,6 +8,7 @@ import { DashboardRoute } from "./src/pages/Dashboard";
 import { ProjectItemRoute } from "./src/pages/ProjectItem";
 import { EditProjectRoute } from "./src/pages/EditProject";
 import { ActiveProjectsRoute } from "./src/pages/ActiveProjects";
+import Error from "./src/pages/Error";
 
 // * CSS for Pages that are not Routes yet */
 // const containerStyle =
@@ -60,6 +60,10 @@ export const router = createBrowserRouter([
           {
             path: "/add-project",
             ...NewProject,
+          },
+          {
+            path: "*",
+            element: <Error />,
           },
         ],
       },

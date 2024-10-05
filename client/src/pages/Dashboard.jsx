@@ -1,25 +1,13 @@
 import { Link, useLoaderData } from "react-router-dom";
-// import { Calendar } from "../components/Calendar";
 import { formatDate } from "@fullcalendar/core";
 import { getAllProjects } from "../api/projects";
-// import { HiArrowSmLeft, HiArrowSmRight } from "react-icons/hi";
-// import { useRef } from "react";
 
 export default function Dashboard() {
   const projects = useLoaderData();
-  // const calendarRef = useRef(null);
-
-  // Make my Buttons work
-  // const GoNext = () => {
-  //   const calendarApi = calendarRef.current.getApi();
-  //   calendarApi.next();
-  // };
-  // const GoPrevious = () => {
-  //   const calendarApi = calendarRef.current.getApi();
-  //   calendarApi.prev();
-  // };
 
   // filtering out any projects that are NOT "active"
+  // const filteredProjects = projects;
+
   const filteredProjects = projects.filter((project) => {
     return project.status === "active";
   });
@@ -30,6 +18,7 @@ export default function Dashboard() {
       className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-4 w-full md:max-h-[100svh] overflow-x-hidden">
       <div id="bottom_grid" className="rounded-md overflow-x-scroll">
         <h1 className="text-2xl pb-4">Active Projects</h1>
+
         {filteredProjects.length === 0 ? (
           <p>Wow! Such Empty...</p>
         ) : (

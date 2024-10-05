@@ -248,7 +248,6 @@ export default function PostForm({
               developer
             </option>
             <Option id={0} name="Paul" />
-            <Option id={1} name="Lori" />
           </select>
           <input
             type="number"
@@ -276,21 +275,6 @@ export default function PostForm({
           </button>
         </div>
       </div>
-
-      {/* Form Buttons */}
-      {/* <div className="flex flex-col gap-8 h-full justify-between">
-        <FormGroup></FormGroup>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-          <Link
-            to={`/dashboard`}
-            className="p-4 bg-[--global-color-dark-text] text-center rounded-md font-bold hover:bg-[--global-color-dark-accent]">
-            cancel
-          </Link>
-          <button className="p-4 bg-[--global-color-light-accent] rounded-md font-bold hover:bg-[--global-color-dark-accent]">
-            {buttonText}
-          </button>
-        </div>
-      </div> */}
     </Form>
   );
 }
