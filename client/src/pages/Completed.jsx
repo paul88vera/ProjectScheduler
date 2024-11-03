@@ -4,10 +4,9 @@ import { formatDate } from "@fullcalendar/core/index.js";
 
 export default function Completed() {
   const projects = useLoaderData();
-  // const filteredCompletedProjects = projects.filter((project) => {
-  //   return project.status === "completed";
-  // });
-  const filteredCompletedProjects = projects;
+  const filteredCompletedProjects = projects.filter((project) => {
+    return project.status === "completed";
+  });
 
   return (
     <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">

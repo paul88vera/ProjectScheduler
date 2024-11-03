@@ -8,10 +8,9 @@ import { getAllProjects } from "../api/projects";
 
 export default function ActiveProjects() {
   const projects = useLoaderData();
-  // const filteredProjects = projects.filter((project) => {
-  //   return project.status === "active";
-  // });
-  const filteredProjects = projects;
+  const filteredProjects = projects.filter((project) => {
+    return project.status === "active";
+  });
 
   // function to put active projects in an array to embed in the calendar
   const newEventList = [];

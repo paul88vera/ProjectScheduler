@@ -1,0 +1,59 @@
+{
+  "name": "Project Scheduler",
+  "shortname": "PSA-VT",
+  "theme_color": "#000321",
+  "background_color": "#000321",
+  "lang": "en",
+  "display": "standalone",
+  "form_factor": "wide",
+  "start_url": "/dashboard",
+  "icons": [
+    {
+      "src": "/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/desktop.png",
+      "sizes": "2880x1622",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Homescreen of PSA"
+    },
+    {
+      "src": "/mobile.png",
+      "sizes": "1000x1622",
+      "type": "image/webp",
+      "label": "Homescreen of PSA"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Active Projects",
+      "url": "/dashboard"
+    },
+    {
+      "name": "Pending Projects",
+      "url": "/pending"
+    },
+    {
+      "name": "Completed Projects",
+      "url": "/completed"
+    }
+  ]
+}

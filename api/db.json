@@ -106,27 +106,5 @@
       ]
     }
   ],
-  "projects": [
-    {
-      "title": "fdsafdsaf",
-      "start": "2024-10-07",
-      "due": "2024-10-25",
-      "status": "active",
-      "priority": "normal",
-      "am": "Kayla",
-      "amDays": "7",
-      "seo": "Jon",
-      "seoDays": "7",
-      "copy": "Lauren",
-      "copyDays": "7",
-      "design": "Jess",
-      "designDays": "7",
-      "social": "Chelsea",
-      "socialDays": "3",
-      "dev": "Paul",
-      "devDays": "10",
-      "colors": "#444455",
-      "id": 1
-    }
-  ]
+  "projects": []
 }

@@ -10,13 +10,13 @@ export default function ProjectItem() {
   return (
     <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-4 w-full max-h-[100svh] overflow-y-scroll">
       <Link
-        to={`/dashboard/projects/${item.id}/edit`}
+        to={`/dashboard/projects/${item.item.id}/edit`}
         className="absolute right-4 top-4">
         <FaEdit className="cursor-pointer text-[1.5rem] hover:text-[1.7rem] text-[--global-color-warning] transition-all ease-in-out" />
       </Link>
 
       <div className="rounded-md w-full">
-        <h1 className="text-2xl pb-4">{item.title}</h1>
+        <h1 className="text-2xl pb-4">{item.item.title}</h1>
         <div id="bottom_grid" className="rounded-md overflow-x-scroll">
           {item.length === 0 ? (
             <p>Wow! Such Empty...</p>
@@ -36,31 +36,33 @@ export default function ProjectItem() {
               </div>
               <div className="rounded-md grid grid-cols-1 text-center gap-2">
                 <div
-                  key={item.id}
+                  key={item.item.id}
                   className="bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center"
-                  title={item.title}>
-                  <p className="overflow-x-scroll text-nowrap">{item.title}</p>
+                  title={item.item.title}>
+                  <p className="overflow-x-scroll text-nowrap">
+                    {item.item.title}
+                  </p>
                   <p>
-                    {formatDate(item.start, {
+                    {formatDate(item.item.start, {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
                     })}
                   </p>
                   <p>
-                    {formatDate(item.due, {
+                    {formatDate(item.item.due, {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
                     })}
                   </p>
-                  <p>{item.am}</p>
-                  <p>{item.design}</p>
-                  <p>{item.copy}</p>
-                  <p>{item.seo}</p>
-                  <p>{item.dev}</p>
-                  <p>{item.social}</p>
-                  <p>{item.status}</p>
+                  <p>{item.item.am}</p>
+                  <p>{item.item.design}</p>
+                  <p>{item.item.copy}</p>
+                  <p>{item.item.seo}</p>
+                  <p>{item.item.dev}</p>
+                  <p>{item.item.social}</p>
+                  <p>{item.item.status}</p>
                 </div>
               </div>
             </div>
@@ -68,7 +70,7 @@ export default function ProjectItem() {
         </div>
       </div>
       <div className="px-4 rounded-md w-full h-[50svh]">
-        Project Schedule Bar: {item.title}
+        Project Schedule Bar: {item.item.title}
       </div>
     </div>
   );

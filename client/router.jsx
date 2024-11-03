@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
             ...CompletedRoute,
           },
           {
-            path: "/add-project",
+            path: "add-project",
             ...NewProject,
           },
           {

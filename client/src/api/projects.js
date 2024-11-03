@@ -13,7 +13,7 @@ export function getAllProjects(options) {
 // @desc     Get project by id
 // @access   Private - Public For Now
 export function getProject(id, options) {
-  return baseApi.get(`projects/:${id}`, options).then((res) => res.data);
+  return baseApi.get(`projects/${id}`, options).then((res) => res.data);
 }
 
 // @route    POST /projects/:id
@@ -27,13 +27,13 @@ export function createProject(data, options) {
 // @desc     Edit project by id
 // @access   Private - Public For Now
 export function updateProject(id, data, options) {
-  return baseApi.put(`projects/:${id}`, data, options).then((res) => res.data);
+  return baseApi.put(`projects/${id}`, data, options).then((res) => res.data);
 }
 // @route    DELETE /projects/:id
 // @desc     Delete project by id
 // @access   Private - Public For Now
 export function deleteProject(id) {
-  return baseApi.delete(`projects/:${id}`, { method: "DELETE" }).then(() => {
+  return baseApi.delete(`projects/${id}`, { method: "DELETE" }).then(() => {
     window.location.replace("/dashboard");
   });
 }

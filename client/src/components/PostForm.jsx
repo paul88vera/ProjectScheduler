@@ -3,19 +3,57 @@
 import { Form, Link } from "react-router-dom";
 import FormGroup from "./FormGroup";
 import Option from "../props/Option";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function PostForm({
   buttonText,
   defaultValues = {},
   errors = {},
 }) {
-  const [amDayState, setAmDayState] = useState();
-  const [seoDayState, setSeoDayState] = useState();
-  const [copyDayState, setCopyDayState] = useState();
-  const [designDayState, setDesignDayState] = useState();
-  const [socialDayState, setSocialDayState] = useState();
-  const [devDayState, setDevDayState] = useState();
+  const [startDate, setStartDate] = useState(defaultValues.start);
+  const [dueDate, setDueDate] = useState(defaultValues.due);
+  const [amDayState, setAmDayState] = useState(
+    parseInt(defaultValues.amDays) || 7
+  );
+  const [seoDayState, setSeoDayState] = useState(
+    parseInt(defaultValues.seoDays) || 7
+  );
+  const [copyDayState, setCopyDayState] = useState(
+    parseInt(defaultValues.copyDays) || 7
+  );
+  const [designDayState, setDesignDayState] = useState(
+    parseInt(defaultValues.designDays) || 7
+  );
+  const [socialDayState, setSocialDayState] = useState(
+    parseInt(defaultValues.socialDays) || 3
+  );
+  const [devDayState, setDevDayState] = useState(
+    parseInt(defaultValues.devDays) || 10
+  );
+
+  /**
+   * StandardDayAmount Function
+   * @param {date, days} param2
+   * @returns new futureDueDate with the sum of all member days added to due date input value
+   */
+
+  const sumOfProjectDays =
+    devDayState +
+    socialDayState +
+    designDayState +
+    copyDayState +
+    seoDayState +
+    amDayState;
+
+  const standardDayAmount = (date, days) => {
+    date = new Date();
+    //**TODO!! */ this is what the date inupt value needs to be in... need the actual Date to add the dates together though...
+    // const futureDueDate = date.toISOString().add(0, 10);
+
+    //   console.log(futureDueDate);
+    //   console.log(startDate);
+    //   console.log(dueDate);
+  };
 
   return (
     <Form
@@ -86,7 +124,13 @@ export default function PostForm({
                 id="start"
                 placeholder="start"
                 className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
-                defaultValue={defaultValues.start}
+                defaultValue={startDate}
+                onChange={(e) => {
+                  if (!defaultValues.start) {
+                    setStartDate(e.target.value);
+                    standardDayAmount(e.target.value, sumOfProjectDays);
+                  }
+                }}
               />
             </label>
           </FormGroup>
@@ -100,7 +144,12 @@ export default function PostForm({
                 id="due"
                 placeholder="due"
                 className="rounded-md p-[.2rem] text-[var(--global-color-dark-text)] bg-[--global-color-dark-bg]"
-                defaultValue={defaultValues.due}
+                onChange={(e) => {
+                  if (!defaultValues.due) {
+                    setDueDate(e.target.value);
+                  }
+                }}
+                defaultValue={dueDate}
               />
             </label>
           </FormGroup>
@@ -129,7 +178,7 @@ export default function PostForm({
                 setAmDayState(e.target.value);
               }
             }}
-            defaultValue={defaultValues.amDays || 7}
+            defaultValue={amDayState}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.seo}>
@@ -155,7 +204,7 @@ export default function PostForm({
                 setSeoDayState(e.target.value);
               }
             }}
-            defaultValue={defaultValues.seoDays || 7}
+            defaultValue={seoDayState}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.copy}>
@@ -182,7 +231,7 @@ export default function PostForm({
                 setCopyDayState(e.target.value);
               }
             }}
-            defaultValue={defaultValues.copyDays || 7}
+            defaultValue={copyDayState}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.design}>
@@ -209,7 +258,7 @@ export default function PostForm({
                 setDesignDayState(e.target.value);
               }
             }}
-            defaultValue={defaultValues.designDays || 7}
+            defaultValue={designDayState}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.social}>
@@ -235,7 +284,7 @@ export default function PostForm({
                 setSocialDayState(e.target.value);
               }
             }}
-            defaultValue={defaultValues.socialDays || 3}
+            defaultValue={socialDayState}
           />
         </FormGroup>
         <FormGroup errorMessage={errors.dev}>
@@ -261,7 +310,7 @@ export default function PostForm({
                 setDevDayState(e.target.value);
               }
             }}
-            defaultValue={defaultValues.devDays || 10}
+            defaultValue={devDayState}
           />
         </FormGroup>
         <div className="grid grid-cols-2 md:grid-cols-2 gap-4">

@@ -11,5 +11,5 @@ export function getAllUsers(options) {
 // @desc     Get user by id
 // @access   Private - Public For Now
 export function getUser(id, options) {
-  return baseApi.get(`users/:${id}`, options).then((res) => res.data);
+  return baseApi.get(`users/${id}`, options).then((res) => res.data);
 }
