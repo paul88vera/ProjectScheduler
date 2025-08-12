@@ -6,7 +6,12 @@ import { baseApi } from "./base";
 // @desc     Get all projects
 // @access   Private - Public For Now
 export function getAllProjects(options) {
-  return baseApi.get("projects", options).then((res) => res.data);
+  return baseApi
+    .get("projects", options)
+    .then((res) => res.data)
+    .catch(function (error) {
+      console.log(error.toJSON());
+    });
 }
 
 // @route    GET /projects/:id
@@ -16,7 +21,7 @@ export function getProject(id, options) {
   return baseApi.get(`projects/${id}`, options).then((res) => res.data);
 }
 
-// @route    POST /projects/:id
+// @route    POST /projects/
 // @desc     Create a project
 // @access   Private - Public For Now
 export function createProject(data, options) {

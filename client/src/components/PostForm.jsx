@@ -163,7 +163,7 @@ export default function PostForm({
             <option value="" disabled>
               account manager
             </option>
-            <Option id={0} name="Kayla" />
+            <Option id={0} name="Kayla" defaultChecked />
             <Option id={1} name="Brianna" />
           </select>
           <input
@@ -190,7 +190,7 @@ export default function PostForm({
             <option value="" disabled>
               seo manager
             </option>
-            <Option id={0} name="Jon" />
+            <Option id={0} name="Jon" defaultChecked />
           </select>
           <input
             type="number"
@@ -216,7 +216,7 @@ export default function PostForm({
             <option value="" disabled>
               copy writer
             </option>
-            <Option id={0} name="Lauren" />
+            <Option id={0} name="Lauren" defaultChecked />
             <Option id={1} name="Esther" />
           </select>
           <input
@@ -243,7 +243,7 @@ export default function PostForm({
             <option value="" disabled>
               designer
             </option>
-            <Option id={0} name="Jess" />
+            <Option id={0} name="Jess" defaultChecked />
             <Option id={1} name="Emma" />
           </select>
           <input
@@ -270,7 +270,7 @@ export default function PostForm({
             <option value="" disabled>
               social media manager
             </option>
-            <Option id={0} name="Chelsea" />
+            <Option id={0} name="Chelsea" defaultChecked />
           </select>
           <input
             type="number"
@@ -296,7 +296,8 @@ export default function PostForm({
             <option value="" disabled>
               developer
             </option>
-            <Option id={0} name="Paul" />
+            <Option id={0} name="Paul" defaultChecked />
+            <Option id={1} name="Mike" />
           </select>
           <input
             type="number"
