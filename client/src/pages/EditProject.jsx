@@ -19,12 +19,12 @@ export default function EditProject() {
       <PostForm
         isSubmitting={isSubmitting}
         errors={errors}
-        defaultValues={project}
+        defaultValues={project[0]}
         buttonText={"save"}
       />
       <div className="absolute top-4 right-4 z-50">
         <FaTrashAlt
-          onClick={() => deleteProject(project.id)}
+          onClick={() => deleteProject(project[0].ProjectID)}
           className="text-[--global-color-priority] text-[1.7rem] cursor-pointer hover:text-[2rem] transition-all  ease-in-out"
         />
       </div>
@@ -34,38 +34,39 @@ export default function EditProject() {
 
 async function action({ request, params: { id } }) {
   const formData = await request.formData();
-  const title = formData.get("title");
-  const start = formData.get("start");
-  const status = formData.get("status");
-  const priority = formData.get("priority");
-  const due = formData.get("due");
-  const am = formData.get("am");
-  const amDays = formData.get("am-days");
-  const seo = formData.get("seo");
-  const seoDays = formData.get("seo-days");
-  const copy = formData.get("copy");
-  const copyDays = formData.get("copy-days");
-  const design = formData.get("design");
-  const designDays = formData.get("design-days");
-  const social = formData.get("social");
-  const socialDays = formData.get("social-days");
-  const dev = formData.get("dev");
-  const devDays = formData.get("dev-days");
-  const colors = formData.get("colors");
+  const ProjectName = formData.get("ProjectName");
+  const StartDate = formData.get("StartDate");
+  const DueDate = formData.get("DueDate");
+  const ProjectStatus = formData.get("ProjectStatus");
+  const ProjectPriority = formData.get("ProjectPriority");
+  const Am = formData.get("Am");
+  const AmDays = formData.get("AmDays");
+  const Seo = formData.get("Seo");
+  const SeoDays = formData.get("SeoDays");
+  const CopyName = formData.get("CopyName");
+  const CopyDays = formData.get("CopyDays");
+  const Design = formData.get("Design");
+  const DesignDays = formData.get("DesignDays");
+  const Social = formData.get("Social");
+  const SocialDays = formData.get("SocialDays");
+  const Dev = formData.get("Dev");
+  const DevDays = formData.get("DevDays");
+  const ProjectColor = formData.get("ProjectColor");
+  const Notes = formData.get("notes");
 
   const errors = postFormValidator({
-    title,
-    start,
-    status,
-    priority,
-    due,
-    am,
-    seo,
-    copy,
-    design,
-    social,
-    dev,
-    colors,
+    ProjectName,
+    StartDate,
+    DueDate,
+    ProjectStatus,
+    ProjectPriority,
+    Am,
+    Seo,
+    CopyName,
+    Design,
+    Social,
+    Dev,
+    ProjectColor,
   });
 
   if (Object.keys(errors).length > 0) {
@@ -75,33 +76,35 @@ async function action({ request, params: { id } }) {
   const updatedProject = await updateProject(
     id,
     {
-      title,
-      start,
-      status,
-      priority,
-      due,
-      am,
-      amDays,
-      seo,
-      seoDays,
-      copy,
-      copyDays,
-      design,
-      designDays,
-      social,
-      socialDays,
-      dev,
-      devDays,
-      colors,
+      ProjectName,
+      StartDate,
+      DueDate,
+      ProjectStatus,
+      ProjectPriority,
+      Am,
+      AmDays,
+      Seo,
+      SeoDays,
+      CopyName,
+      CopyDays,
+      Design,
+      DesignDays,
+      Social,
+      SocialDays,
+      Dev,
+      DevDays,
+      ProjectColor,
+      Notes,
     },
     { signal: request.signal }
   );
+  updatedProject;
 
-  return redirect(`/dashboard/projects/${updatedProject.id}/`);
+  return redirect(`/dashboard/projects/${id}`);
 }
 
-function loader({ request: { signal }, params: { id } }) {
-  const project = getProject(id, { signal });
+async function loader({ request: { signal }, params: { id } }) {
+  const project = await getProject(id, { signal });
   return project;
 }
 

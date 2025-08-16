@@ -6,12 +6,7 @@ import { baseApi } from "./base";
 // @desc     Get all projects
 // @access   Private - Public For Now
 export function getAllProjects(options) {
-  return baseApi
-    .get("projects", options)
-    .then((res) => res.data)
-    .catch(function (error) {
-      console.log(error.toJSON());
-    });
+  return baseApi.get("projects", options).then((res) => res.data);
 }
 
 // @route    GET /projects/:id

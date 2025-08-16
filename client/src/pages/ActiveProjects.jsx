@@ -9,7 +9,7 @@ import { getAllProjects } from "../api/projects";
 export default function ActiveProjects() {
   const projects = useLoaderData();
   const filteredProjects = projects.filter((project) => {
-    return project.status === "active";
+    return project.ProjectStatus === "Active";
   });
 
   // function to put active projects in an array to embed in the calendar
@@ -19,10 +19,10 @@ export default function ActiveProjects() {
   function getOL() {
     for (let i = 0; i < filteredProjects.length; i++) {
       const eventBody = {
-        title: filteredProjects[counter].title,
-        start: filteredProjects[counter].start,
-        end: filteredProjects[counter].due,
-        color: filteredProjects[counter].colors,
+        title: filteredProjects[counter].ProjectName,
+        start: filteredProjects[counter].StartDate,
+        end: filteredProjects[counter].DueDate,
+        color: filteredProjects[counter].ProjectColor,
       };
       newEventList.push(eventBody);
 

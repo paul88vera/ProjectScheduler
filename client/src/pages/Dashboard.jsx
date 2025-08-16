@@ -6,10 +6,8 @@ export default function Dashboard() {
   const projects = useLoaderData();
 
   // filtering out any projects that are NOT "active"
-  // const filteredProjects = projects;
-
   const filteredProjects = projects.filter((project) => {
-    return project.status === "active";
+    return project.ProjectStatus === "Active";
   });
 
   return (
@@ -38,32 +36,34 @@ export default function Dashboard() {
             <div className="rounded-md grid grid-cols-1 text-center gap-2">
               {filteredProjects.map((item) => (
                 <Link
-                  to={`/dashboard/projects/${item.id}`}
-                  key={item.id}
+                  to={`/dashboard/projects/${item.ProjectID}`}
+                  key={item.ProjectID}
                   className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center"
-                  title={item.title}>
-                  <p className="overflow-x-scroll text-nowrap">{item.title}</p>
+                  title={item.ProjectName}>
+                  <p className="overflow-x-scroll text-nowrap">
+                    {item.ProjectName}
+                  </p>
                   <p>
-                    {formatDate(item.start, {
+                    {formatDate(item.StartDate, {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
                     })}
                   </p>
                   <p>
-                    {formatDate(item.due, {
+                    {formatDate(item.DueDate, {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
                     })}
                   </p>
-                  <p>{item.am}</p>
-                  <p>{item.design}</p>
-                  <p>{item.copy}</p>
-                  <p>{item.seo}</p>
-                  <p>{item.dev}</p>
-                  <p>{item.social}</p>
-                  <p>{item.status}</p>
+                  <p>{item.Am}</p>
+                  <p>{item.Design}</p>
+                  <p>{item.CopyName}</p>
+                  <p>{item.Seo}</p>
+                  <p>{item.Dev}</p>
+                  <p>{item.Social}</p>
+                  <p>{item.ProjectStatus}</p>
                 </Link>
               ))}
             </div>

@@ -22,38 +22,39 @@ export default function AddProject() {
 
 async function action({ request }) {
   const formData = await request.formData();
-  const title = formData.get("title");
-  const start = formData.get("start");
-  const due = formData.get("due");
-  const status = formData.get("status");
-  const priority = formData.get("priority");
-  const am = formData.get("am");
-  const amDays = formData.get("am-days");
-  const seo = formData.get("seo");
-  const seoDays = formData.get("seo-days");
-  const copy = formData.get("copy");
-  const copyDays = formData.get("copy-days");
-  const design = formData.get("design");
-  const designDays = formData.get("design-days");
-  const social = formData.get("social");
-  const socialDays = formData.get("social-days");
-  const dev = formData.get("dev");
-  const devDays = formData.get("dev-days");
-  const colors = formData.get("colors");
+  const ProjectName = formData.get("ProjectName");
+  const StartDate = formData.get("StartDate");
+  const DueDate = formData.get("DueDate");
+  const ProjectStatus = formData.get("ProjectStatus");
+  const ProjectPriority = formData.get("ProjectPriority");
+  const Am = formData.get("Am");
+  const AmDays = formData.get("AmDays");
+  const Seo = formData.get("Seo");
+  const SeoDays = formData.get("SeoDays");
+  const CopyName = formData.get("CopyName");
+  const CopyDays = formData.get("CopyDays");
+  const Design = formData.get("Design");
+  const DesignDays = formData.get("DesignDays");
+  const Social = formData.get("Social");
+  const SocialDays = formData.get("SocialDays");
+  const Dev = formData.get("Dev");
+  const DevDays = formData.get("DevDays");
+  const ProjectColor = formData.get("ProjectColor");
+  const Notes = formData.get("notes");
 
   const errors = postFormValidator({
-    title,
-    start,
-    due,
-    status,
-    priority,
-    am,
-    seo,
-    copy,
-    design,
-    social,
-    dev,
-    colors,
+    ProjectName,
+    StartDate,
+    DueDate,
+    ProjectStatus,
+    ProjectPriority,
+    Am,
+    Seo,
+    CopyName,
+    Design,
+    Social,
+    Dev,
+    ProjectColor,
   });
 
   if (Object.keys(errors).length > 0) {
@@ -61,42 +62,44 @@ async function action({ request }) {
   }
 
   // const event = await createNewEvent({
-  //   title,
-  //   start,
-  //   due,
+  //   ProjectNAe,
+  //   StartDate,
+  //   DueDate,
   // });
 
   const project = await createProject(
     {
-      title,
-      start,
-      due,
-      status,
-      priority,
-      am,
-      amDays,
-      seo,
-      seoDays,
-      copy,
-      copyDays,
-      design,
-      designDays,
-      social,
-      socialDays,
-      dev,
-      devDays,
-      colors,
+      ProjectName,
+      StartDate,
+      DueDate,
+      ProjectStatus,
+      ProjectPriority,
+      Am,
+      AmDays,
+      Seo,
+      SeoDays,
+      CopyName,
+      CopyDays,
+      Design,
+      DesignDays,
+      Social,
+      SocialDays,
+      Dev,
+      DevDays,
+      ProjectColor,
+      Notes,
     },
     { signal: request.signal }
   );
-  return redirect(`/dashboard/projects/${project.id}`);
+
+  return redirect(`/dashboard/projects/${project.insertId}`);
 }
 
 async function loader({ request: { signal } }) {
-  const projects = getAllProjects({ signal });
-  const users = getAllUsers({ signal });
+  const projects = await getAllProjects({ signal });
+  const users = await getAllUsers({ signal });
   // const events = getAllEvents({ signal });
-  return { users: await users, projects: projects };
+  return { users: users, projects: projects };
 }
 
 // eslint-disable-next-line react-refresh/only-export-components

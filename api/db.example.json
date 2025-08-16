@@ -8,13 +8,6 @@
           "department": "dev",
           "role": "super-admin",
           "active": true
-        },
-        {
-          "id": 1,
-          "name": "Lori",
-          "department": "dev",
-          "role": "super-admin",
-          "active": true
         }
       ]
     },
@@ -113,6 +106,27 @@
       ]
     }
   ],
-  "clients": [],
-  "projects": []
+  "projects": [
+    {
+      "title": "test",
+      "start": "2025-08-18",
+      "status": "pending",
+      "priority": "normal",
+      "due": "2025-08-22",
+      "am": "Kayla",
+      "amDays": "7",
+      "seo": "Jon",
+      "seoDays": "7",
+      "copy": "Lauren",
+      "copyDays": "7",
+      "design": "Jess",
+      "designDays": "7",
+      "social": "Chelsea",
+      "socialDays": "3",
+      "dev": "Mike",
+      "devDays": "10",
+      "colors": "#0000f0",
+      "id": 1
+    }
+  ]
 }

@@ -5,10 +5,12 @@ import { formatDate } from "@fullcalendar/core/index.js";
 
 export default function Pending() {
   const projects = useLoaderData();
+
   const filteredPendingProjects = projects.filter((project) => {
-    return project.status === "pending";
+    return project.ProjectStatus === "Pending";
   });
 
+  console.log();
   return (
     <div className="p-4 md:p-8 w-full max-h-[100svh] overflow-y-scroll">
       <h1 className="text-2xl pb-4">Pending Projects</h1>
@@ -32,32 +34,34 @@ export default function Pending() {
             <div className="rounded-md grid grid-cols-1 text-center gap-2">
               {filteredPendingProjects.map((item) => (
                 <Link
-                  to={`/dashboard/projects/${item.id}`}
-                  key={item.id}
+                  to={`/dashboard/projects/${item.ProjectID}`}
+                  key={item.ProjectID}
                   className="hover:bg-[--global-color-light-accent] bg-[--global-color-dark-accent] p-4 rounded-md grid grid-cols-10 text-center"
-                  title={item.title}>
-                  <p className="overflow-x-scroll text-nowrap">{item.title}</p>
+                  title={item.ProjectName}>
+                  <p className="overflow-x-scroll text-nowrap">
+                    {item.ProjectName}
+                  </p>
                   <p>
-                    {formatDate(item.start, {
+                    {formatDate(item.StartDate, {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
                     })}
                   </p>
                   <p>
-                    {formatDate(item.due, {
+                    {formatDate(item.DueDate, {
                       year: "numeric",
                       month: "short",
                       day: "numeric",
                     })}
                   </p>
-                  <p>{item.am}</p>
-                  <p>{item.design}</p>
-                  <p>{item.copy}</p>
-                  <p>{item.seo}</p>
-                  <p>{item.dev}</p>
-                  <p>{item.social}</p>
-                  <p>{item.status}</p>
+                  <p>{item.Am}</p>
+                  <p>{item.Design}</p>
+                  <p>{item.CopyName}</p>
+                  <p>{item.Seo}</p>
+                  <p>{item.Dev}</p>
+                  <p>{item.Social}</p>
+                  <p>{item.ProjectStatus}</p>
                 </Link>
               ))}
             </div>
