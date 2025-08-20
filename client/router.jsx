@@ -11,8 +11,6 @@ import { ActiveProjectsRoute } from "./src/pages/ActiveProjects";
 import Error from "./src/pages/Error";
 
 // * CSS for Pages that are not Routes yet */
-// const containerStyle =
-//   "p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full h-full overflow-y-scroll";
 
 export const router = createBrowserRouter([
   {
