@@ -13,9 +13,9 @@ dist-ssr
 *.local
 .env
 db.json
-/api/
 
 # Editor directories and files
+.api/*
 .vscode/*
 !.vscode/extensions.json
 .idea
