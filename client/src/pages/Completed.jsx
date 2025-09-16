@@ -9,14 +9,14 @@ export default function Completed() {
   });
 
   return (
-    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll">
-      <div>
+    <div className="p-4 md:p-8 grid grid-cols-1 gap-4 md:gap-16 w-full max-h-[100svh] overflow-y-scroll overflow-x-hidden">
+      <div className="rounded-md overflow-x-scroll">
         <h1 className="text-2xl pb-4">Completed Projects</h1>
         {filteredCompletedProjects.length === 0 ? (
           <p>Wow! Such Empty... </p>
         ) : (
           <div className="rounded-md w-full max-h-[100svh]">
-            <div className="flex flex-col gap-2 overflow-scroll">
+            <div className="flex flex-col gap-2 min-w-[800px] overflow-scroll">
               <div className="p-4 rounded-md grid grid-cols-10 text-center bg-[--global-color-dark-light-bg]">
                 <h3>PROJECT</h3>
                 <h3>START</h3>

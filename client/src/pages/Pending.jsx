@@ -12,13 +12,13 @@ export default function Pending() {
 
   console.log();
   return (
-    <div className="p-4 md:p-8 w-full max-h-[100svh] overflow-y-scroll">
+    <div className="p-4 md:p-8 w-full max-h-[100svh] overflow-y-scroll overflow-x-hidden">
       <h1 className="text-2xl pb-4">Pending Projects</h1>
       {filteredPendingProjects.length === 0 ? (
         <p>Wow! Such Empty...</p>
       ) : (
-        <div className="rounded-md w-full h-[50svh]">
-          <div className="flex flex-col gap-2 overflow-scroll">
+        <div className="rounded-md w-full overflow-x-scroll">
+          <div className="flex flex-col gap-2 overflow-scroll min-w-[800px]">
             <div className="p-4 rounded-md grid grid-cols-10 text-center bg-[--global-color-dark-light-bg]">
               <h3>PROJECT</h3>
               <h3>START</h3>
