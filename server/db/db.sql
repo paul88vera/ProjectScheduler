@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS projectManager;
-CREATE DATABASE projectManager;
-USE projectManager; 
+DROP DATABASE IF EXISTS project_Manager;
+CREATE DATABASE project_Manager;
+USE project_Manager; 
